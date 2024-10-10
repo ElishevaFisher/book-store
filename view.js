@@ -60,3 +60,10 @@ document.getElementById("next-button").addEventListener("click", () => {
     updatePaginationButtons();
   }
 });
+
+const toggleAddBook=()=>{
+    const addBookDiv = document.getElementById("add-book");
+    addBookDiv.style.display=addBookDiv.style.display==="none"||addBookDiv.style.display=== ""? "block" : "none";
+}
+//להוסיף פונקציה SUMBIT ששומרת לDATA
+

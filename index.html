@@ -12,9 +12,22 @@
       <h1>BookShop ERP</h1>
     </div>
     <div id="littleHeader">
-      <button id="new-book">New Book +</button>
+      <button id="new-book" onclick="toggleAddBook()">New Book +</button>
       <button id="load-data">Load data</button>
     </div>
+    <div id="add-book" style="display: none;">
+        <h2>Add New Book</h2>
+        <button id="close-button" onclick="toggleAddBook()">Close</button>
+        <form id="book-form">
+          <label for="title">Title:</label><br>
+          <input type="text" id="title" name="title"><br><br>
+          <label for="price">Price:</label><br>
+          <input type="number" id="price" name="price"><br><br>
+          <label for="img">Image URL:</label><br>
+          <input type="text" id="img" name="img"><br><br>
+          <button type="submit">Save</button>
+        </form>
+      </div>
     <div id="book-container">
       <div id="book-list">
         <div id="title">
