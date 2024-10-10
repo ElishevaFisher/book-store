@@ -42,3 +42,7 @@ const Gbooklist=[
         img:"https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTXdKUybuuYAgblRfxVYuGWQ1NzMzGpzRGXQQw3flxR3s1XGVrI8ssMdXuGvNuBo018Tsr68VayaWADBkUJCeVkWgkNuzX2Ms9SjAlPKHPDfSEDW89QbvZc",
     },
 ];
+
+let currentPage=1;
+const booksPerPage=5;
+const Gid=7;

@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BookShop</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div id="header">
-        <h1>BookShop ERP</h1>
+      <h1>BookShop ERP</h1>
     </div>
     <div id="littleHeader">
-        <button id="new-book">New Book +</button>
-        <button id="load-data">Load data</button>
+      <button id="new-book">New Book +</button>
+      <button id="load-data">Load data</button>
     </div>
     <div id="book-container">
-        <div id="book-list">
-            <div id="title">
-                <h4>Id</h4>
-                <h4>Title</h4>
-                <h4>Price</h4>
-                <h4>Action</h4>
-            </div>
-            <div id="books"></div>
+      <div id="book-list">
+        <div id="title">
+          <h4>Id</h4>
+          <h4>Title</h4>
+          <h4>Price</h4>
+          <h4>Action</h4>
         </div>
-        <div id="book-detail">
-
-        </div>
+        <div id="books"></div>
+        <div id="helpBtn">
+            <button id="prev-button">Previous</button>
+            <button id="next-button">Next</button>
+          </div>
+      </div>
+      
+      <div id="book-detail"></div>
+      
     </div>
     <script src="model.js"></script>
     <script src="view.js"></script>
     <script src="controller.js"></script>
-</body>
+  </body>
 </html>
