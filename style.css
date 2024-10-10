@@ -1,0 +1,71 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#header {
+  height: 15%;
+  background-color: #f0f0f0;
+  display: flex;
+  padding-left: 20px;
+}
+#littleHeader {
+  height: 10%;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+}
+#littleHeader button {
+  color: white;
+  background-color: black;
+  border: none;
+  padding: 20px;
+  font-size: 16px;
+}
+#littleHeader button:active {
+  transform: scale(0.95);
+}
+#book-container {
+  height: 75%;
+  display: flex;
+  flex-direction: row;
+}
+#book-list {
+  flex: 3;
+  background-color: #e6e6fa;
+  display: flex;
+  flex-direction: column;
+}
+#book-detail {
+  flex: 2;
+  padding: 20px;
+}
+#title {
+  display: grid;
+  grid-template-columns: 1fr 4fr 2fr 3fr;
+  background-color: gray;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.book {
+  display: grid;
+  grid-template-columns: 1fr 4fr 2fr 1fr 1fr 1fr;
+  background-color: white;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#book h4, #title h4{
+    border: 0.2px solid #E0E0E0     ;
+    padding: 5px;
+    margin: 0;
+    border-top: none;
+}
+#book img{
+    width: 25px;
+    align-self: center;
+    margin-left: 5px;
+    object-fit: contain;
+}
+
