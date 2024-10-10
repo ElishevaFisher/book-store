@@ -40,22 +40,24 @@ body {
 }
 #book-detail {
   flex: 2;
-  padding: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
+
 #title {
   display: grid;
   grid-template-columns: 1fr 4fr 2fr 3fr;
   background-color: gray;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 9px;
+  margin-right:9px;
 }
 
 .book {
   display: grid;
   grid-template-columns: 1fr 4fr 2fr 1fr 1fr 1fr;
   background-color: white;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 9px;
+  margin-right: 9px;
 }
 .book h4,
 #title h4 {
@@ -70,11 +72,20 @@ body {
   margin-left: 5px;
   object-fit: contain;
 }
-
+.book button{
+  border: 0.2px solid #e0e0e0;
+  background-color: white;
+  cursor: pointer;
+}
+.book button:hover{
+  transform: scale(1.1);
+}
 #helpBtn {
   display: flex;
   margin-top: 10px;
   justify-content: space-between;
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 #prev-button, #next-button {
@@ -86,4 +97,24 @@ body {
   font-size: 16px; 
   cursor: pointer; 
   border-radius: 5px; 
+}
+
+#book-detail h3{
+  background-color: gray;
+  padding: 15px;
+  margin: 0;
+  text-align: center;
+}
+
+#book-detail h5{
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 1.2em;
+}
+
+#book-detail img{
+  width: 50%;
+  margin-top: 10px;
+  display: inline-block;
+  vertical-align: middle;
 }

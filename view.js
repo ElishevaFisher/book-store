@@ -1,9 +1,8 @@
-
 const renderBook = (book) => {
   return `
         <div class="book">
             <h4 id="book-id">${book.id}</h4>
-            <h4 id="book-title">${book.title}</h4>
+            <button id="book-title" onclick='renderBookDetail(${JSON.stringify(book)})'>${book.title}</button>
             <h4 id="book-price">$${book.price}</h4>
             <h4 id="book-read">read</h4>
             <h4 id="book-update">update</h4>
@@ -11,9 +10,8 @@ const renderBook = (book) => {
         </div>
     `;
 };
-
 const renderBooks = (books) => {
-    const pagBooks= paginateBooks(books);
+  const pagBooks = paginateBooks(books);
   let booksStr = ``;
   for (const book of pagBooks) {
     booksStr += renderBook(book);
@@ -22,30 +20,43 @@ const renderBooks = (books) => {
   return booksStr;
 };
 
-const paginateBooks= (books) =>{
-    const startIndex =(currentPage -1)* booksPerPage;
-    const endIndex= startIndex+booksPerPage;
-    return books.slice(startIndex,endIndex);
+const renderBookDetail = (book) => {
+   const str= `
+        <div id="details">
+            <h3>${book.title}</h3>
+            <h5>Price:$${book.price}</h3>
+            <img src="${book.img}" alt="${book.title}">
+    `;
+    document.getElementById("book-detail").innerHTML=str;
+    return str;
 };
 
-const updatePagBtn=()=>{
-    document.getElementById("prev-button").disabled = currentPage === 1;
-    document.getElementById("next-button").disabled = currentPage >= Math.ceil(Gbooklist.length / booksPerPage);
+
+
+const paginateBooks = (books) => {
+  const startIndex = (currentPage - 1) * booksPerPage;
+  const endIndex = startIndex + booksPerPage;
+  return books.slice(startIndex, endIndex);
 };
 
+const updatePagBtn = () => {
+  document.getElementById("prev-button").disabled = currentPage === 1;
+  document.getElementById("next-button").disabled =
+    currentPage >= Math.ceil(Gbooklist.length / booksPerPage);
+};
 
 document.getElementById("prev-button").addEventListener("click", () => {
-    if (currentPage > 1) {
-        currentPage--;
-        renderBooks(Gbooklist);
-        updatePaginationButtons();
-    }
+  if (currentPage > 1) {
+    currentPage--;
+    renderBooks(Gbooklist);
+    updatePaginationButtons();
+  }
 });
 
 document.getElementById("next-button").addEventListener("click", () => {
-    if (currentPage < Math.ceil(Gbooklist.length / booksPerPage)) {
-        currentPage++;
-        renderBooks(Gbooklist);
-        updatePaginationButtons();
-    }
+  if (currentPage < Math.ceil(Gbooklist.length / booksPerPage)) {
+    currentPage++;
+    renderBooks(Gbooklist);
+    updatePaginationButtons();
+  }
 });
