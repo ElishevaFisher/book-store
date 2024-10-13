@@ -7,11 +7,14 @@ const renderBook = (book) => {
             )})'>${book.title}</button>
             <h4 class="book-price">$${book.price}</h4>
             <h4 class="book-read">read</h4>
-            <h4 class="book-update">update</h4>
+            <button class="book-update" onclick="editBook(${
+              book.id
+            })">update</button> 
             <button class="deleteBtn"><img src="garbige.jpg" alt="delete"></button>
         </div>
     `;
 };
+
 const renderBooks = (a) => {
   const pagBooks = paginateBooks(a);
   let booksStr = ``;
@@ -92,10 +95,10 @@ function loadFromLocalStorage() {
   renderBooks(Gbooklist);
 }
 
-document.getElementById("book-form").addEventListener("submit", (event) => {
-  const title = document.getElementById("title").value;
-  const price = parseFloat(document.getElementById("price").value);
-  const img = document.getElementById("img").value;
+document.getElementById("new-book-form").addEventListener("submit", (event) => {
+  const title = document.getElementById("newBookTitle").value;
+  const price = parseFloat(document.getElementById("newBookPrice").value);
+  const img = document.getElementById("newBookImg").value;
 
   if (title && !isNaN(price) && img) {
     Gid++;
@@ -110,21 +113,22 @@ document.getElementById("book-form").addEventListener("submit", (event) => {
     renderBooks(Gbooklist);
     updatePagBtn();
     toggleAddBook();
-  } else {
-    alert("Please fill in all fields correctly");
   }
+  // else {
+  //   alert("Please fill in all fields correctly");
+  // }
 });
 
-document.addEventListener("click", (event) => {
+document.getElementById("books").addEventListener("click", (event) => {
   if (event.target.classList.contains("deleteBtn")) {
     const bookDiv = event.target.closest(".book");
     const bookIdDelete = parseInt(bookDiv.dataset.id, 10);
     Gbooklist = Gbooklist.filter((book) => book.id !== bookIdDelete);
-    
-    Gbooklist.forEach((book,index)=>{
-      book.id=index+1;
+
+    Gbooklist.forEach((book, index) => {
+      book.id = index + 1;
     });
-    Gid=Gbooklist.length ? Gbooklist[Gbooklist.length-1].id+1 :1;
+    Gid = Gbooklist.length ? Gbooklist[Gbooklist.length - 1].id + 1 : 1;
 
     saveToLocalstorage();
     renderBooks(Gbooklist);
@@ -178,9 +182,57 @@ function resetData() {
       img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTXdKUybuuYAgblRfxVYuGWQ1NzMzGpzRGXQQw3flxR3s1XGVrI8ssMdXuGvNuBo018Tsr68VayaWADBkUJCeVkWgkNuzX2Ms9SjAlPKHPDfSEDW89QbvZc",
     },
   ];
-  Gid=7;
+  Gid = 7;
   saveToLocalstorage();
   renderBooks(Gbooklist);
 }
 
+const editBook = (bookId) => {
+  const book = Gbooklist.find((b) => b.id === bookId);
+  if (book) {
+    document.getElementById("updateBookTitle").value = book.title;
+    document.getElementById("updateBookPrice").value = book.price;
+    document.getElementById("updateBookImg").value = book.img;
+    document.getElementById("update-book-form").dataset.bookId = bookId;
+    document.getElementById("update-book").style.display = "block";
+  }
+};
 
+document
+  .getElementById("update-book-form")
+  .addEventListener("submit", (event) => {
+    const bookId = parseInt(
+      document.getElementById("update-book-form").dataset.bookId
+    );
+    const title = document.getElementById("updateBookTitle").value;
+    const price = parseFloat(document.getElementById("updateBookPrice").value);
+    const img = document.getElementById("updateBookImg").value;
+
+    const bookIndex = Gbooklist.findIndex((b) => b.id === bookId);
+    if (bookIndex !== -1) {
+      // עדכון הספר במערך
+      Gbooklist[bookIndex] = {
+        ...Gbooklist[bookIndex],
+        title,
+        price,
+        img,
+      };
+
+      saveToLocalstorage();
+      renderBooks(Gbooklist);
+      updatePagBtn();
+    }
+    // else {
+    //   alert("Please fill in all fields correctly");
+    // }
+    document.getElementById("update-book").style.display = "none";
+  });
+
+const toggleUpdateBook = () => {
+  const updateBookForm = document.getElementById("update-book");
+  if (updateBookForm.style.display === "none") {
+    updateBookForm.style.display = "block";
+  } else {
+    updateBookForm.style.display = "none";
+  }
+};

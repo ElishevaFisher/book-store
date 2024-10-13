@@ -15,22 +15,49 @@
       <button id="new-book" onclick="toggleAddBook()">New Book +</button>
       <button id="load-data" onclick="resetData()">Load data</button>
     </div>
-    <div id="add-book" style="display: none;">
-        <h2>Add New Book</h2>
-        <button id="close-button" onclick="toggleAddBook()">Close</button>
-        <form id="book-form">
-          <label for="title">Title:</label><br>
-          <input type="text" id="title" name="title"><br><br>
-          <label for="price">Price:</label><br>
-          <input type="number" id="price" name="price"><br><br>
-          <label for="img">Image URL:</label><br>
-          <input type="text" id="img" name="img"><br><br>
-          <button type="submit">Save</button>
-        </form>
-      </div>
+    <div id="add-book" style="display: none">
+      <h2>Add New Book</h2>
+      <button id="close-button" onclick="toggleAddBook()">Close</button>
+      <form id="new-book-form">
+        <label for="newBookTitle">Title:</label><br />
+        <input type="text" id="newBookTitle" name="newBookTitle" /><br /><br />
+        <label for="newBookPrice">Price:</label><br />
+        <input
+          type="number"
+          id="newBookPrice"
+          name="newBookPrice"
+        /><br /><br />
+        <label for="newBookImg">Image URL:</label><br />
+        <input type="text" id="newBookImg" name="newBookImg" /><br /><br />
+        <button type="submit">Save</button>
+      </form>
+    </div>
+
+    <div id="update-book" style="display: none">
+      <h2>Update Book</h2>
+      <button id="close-button" onclick="toggleUpdateBook()">Close</button>
+      <form id="update-book-form">
+        <label for="updateBookTitle">Title:</label><br />
+        <input
+          type="text"
+          id="updateBookTitle"
+          name="newBookTitle"
+        /><br /><br />
+        <label for="updateBookPrice">Price:</label><br />
+        <input
+          type="number"
+          id="updateBookPrice"
+          name="newBookPrice"
+        /><br /><br />
+        <label for="updateBookImg">Image URL:</label><br />
+        <input type="text" id="updateBookImg" name="newBookImg" /><br /><br />
+        <button type="submit">Save</button>
+      </form>
+    </div>
+
     <div id="book-container">
       <div id="book-list">
-        <div id="title">
+        <div id="bookListTitle">
           <h4>Id</h4>
           <h4>Title</h4>
           <h4>Price</h4>
