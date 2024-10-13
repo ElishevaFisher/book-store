@@ -1,4 +1,4 @@
-const Gbooklist=[
+let Gbooklist=[
     {
         id:1,
         title:"The Covenant of Water",
