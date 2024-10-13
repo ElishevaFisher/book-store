@@ -46,7 +46,8 @@ const updatePagBtn = () => {
   document.getElementById("prev-button").disabled = currentPage === 1;
   document.getElementById("next-button").disabled =
     currentPage >= Math.ceil(Gbooklist.length / booksPerPage);
-};
+  document.getElementById("curPage").innerText=currentPage;
+  };
 
 document.getElementById("prev-button").addEventListener("click", () => {
   if (currentPage > 1) {
@@ -210,7 +211,6 @@ document
 
     const bookIndex = Gbooklist.findIndex((b) => b.id === bookId);
     if (bookIndex !== -1) {
-      // עדכון הספר במערך
       Gbooklist[bookIndex] = {
         ...Gbooklist[bookIndex],
         title,
