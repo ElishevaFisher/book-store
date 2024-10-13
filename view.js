@@ -12,8 +12,8 @@ const renderBook = (book) => {
         </div>
     `;
 };
-const renderBooks = (books) => {
-  const pagBooks = paginateBooks(books);
+const renderBooks = (a) => {
+  const pagBooks = paginateBooks(a);
   let booksStr = ``;
   for (const book of pagBooks) {
     booksStr += renderBook(book);
@@ -71,21 +71,48 @@ const toggleAddBook = () => {
 
 function saveToLocalstorage() {
   localStorage.setItem("bookList", JSON.stringify(Gbooklist));
+  localStorage.setItem("bookId", Gid);
 }
 function loadFromLocalStorage() {
   const storedData = localStorage.getItem("bookList");
-  try{
+  const storedGid = localStorage.getItem("bookId");
+  try {
     if (storedData) {
       Gbooklist = JSON.parse(storedData);
     } else {
       saveToLocalstorage();
     }
-  }catch(error)
-  {
+    if (storedGid) {
+      Gid = parseInt(storedGid, 10);
+    }
+  } catch (error) {
     console.error("Error parsing json from localStorage", error);
   }
-  
+  // console.log(renderBooks(Gbooklist));
   renderBooks(Gbooklist);
 }
 
+document.getElementById("book-form").addEventListener("submit",(event)=>{
+  const title = document.getElementById("title").value;
+  const price = parseFloat(document.getElementById("price").value);
+  const img = document.getElementById("img").value;
+
+  if (title && !isNaN(price) && img) {
+    Gid++;
+    const newBook = {
+      id: Gid,
+      title: title,
+      price: price,
+      img: img,
+    };
+    Gbooklist.push(newBook);
+    saveToLocalstorage();
+    renderBooks(Gbooklist);
+    updatePagBtn();
+    toggleAddBook();
+  } else {
+    alert("Please fill in all fields correctly");
+  }
+}) ;
+ 
 
